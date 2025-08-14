@@ -512,32 +512,7 @@ section {
   }
 
   /* Footer */
-  footer {
-    background: linear-gradient(135deg, var(--dark-text) 0%, #34495e 100%);
-    color: white;
-    padding: 50px 20px 30px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  footer::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: float 8s ease-in-out infinite reverse;
-  }
-
-  footer h3 {
-    font-family: 'Fredoka', cursive;
-    margin: 30px 0 20px;
-    font-size: 1.8rem;
-  }
+  
   /* Fix footer form input visibility */
 #footerForm input {
   background: rgba(255, 255, 255, 0.2) !important;
