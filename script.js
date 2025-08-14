@@ -132,24 +132,48 @@ document.getElementById("helpdeskForm").onsubmit = function(e) {
 };
 
 // Footer form with validation
-document.getElementById("footerForm").onsubmit = function(e) {
+// Enhanced footer form handling
+document.getElementById("footerForm").addEventListener("submit", function(e) {
   e.preventDefault();
   
+  // Validate inputs
+  const inputs = this.querySelectorAll('input[required]');
+  let isValid = true;
+  
+  inputs.forEach(input => {
+    input.style.borderColor = '#E0E6ED'; // Reset border
+    if (!input.value.trim()) {
+      input.style.borderColor = '#FF6B6B';
+      isValid = false;
+    }
+  });
+
+  if (!isValid) {
+    showNotification("Please fill all required fields!", 'error');
+    return;
+  }
+
+  // Prepare data
   const formData = new FormData(this);
-  const data = Object.fromEntries(formData);
-  
-  // Add timestamp and additional info
-  data.timestamp = new Date().toISOString();
-  data.source = 'Footer Contact Form';
-  
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    subject: formData.get('subject'),
+    timestamp: new Date().toISOString(),
+    source: 'Footer Contact Form'
+  };
+
+  // Show loading state
+  const btn = this.querySelector('button');
+  btn.innerHTML = '<div class="loading"></div> Sending...';
+  btn.disabled = true;
+
+  // Submit data
   sendJSONP("FooterContacts", data);
-  this.reset();
   
-  // Add celebration effect
-  setTimeout(() => {
-    createConfetti();
-  }, 1000);
-};
+  // Reset form
+  this.reset();
+});
 
 // Confetti animation for form submissions
 function createConfetti() {
