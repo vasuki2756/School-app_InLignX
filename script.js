@@ -156,9 +156,9 @@ document.getElementById("footerForm").addEventListener("submit", function(e) {
   // Prepare data
   const formData = new FormData(this);
   const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    subject: formData.get('subject'),
+    name: formData.get('f_name'),
+    email: formData.get('f_email'),
+    subject: formData.get('f_subject'),
     timestamp: new Date().toISOString(),
     source: 'Footer Contact Form'
   };
