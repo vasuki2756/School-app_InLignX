@@ -133,6 +133,7 @@ document.getElementById("helpdeskForm").onsubmit = function(e) {
 
 // Footer form with validation
 // Enhanced footer form handling
+// Enhanced footer form handling
 document.getElementById("footerForm").addEventListener("submit", function(e) {
   e.preventDefault();
   
@@ -174,7 +175,6 @@ document.getElementById("footerForm").addEventListener("submit", function(e) {
   // Reset form
   this.reset();
 });
-
 // Confetti animation for form submissions
 function createConfetti() {
   const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFD93D', '#6BCF7F', '#A8E6CF', '#FFB347'];
